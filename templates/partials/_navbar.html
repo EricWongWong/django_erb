@@ -1,0 +1,57 @@
+    {% load static %}
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+      <div class="container">
+        {% comment %} fix index.html done {% endcomment %}
+        {% comment %} < class="navbar-brand" href="index.html"> {% endcomment %}
+        <a class="navbar-brand" href={% url "pages:index" %}>
+        
+          {% comment %} fix static done {% endcomment %}
+          <img src={% static "img/logo.png" %} class="logo" alt="" />
+        
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+
+              {% comment %} fix index.html done {% endcomment %}
+              <a class="nav-link" href={% url "pages:index" %}>Home</a>
+            </li>
+            <li {% if '/about' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+
+              {% comment %} fix about.html done {% endcomment %}
+              <a class="nav-link" href={% url "pages:about" %}>About</a>
+            </li>
+            <li {% if '/listings/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+              {% comment %} listing.html {% endcomment %}
+
+              <a class="nav-link" href={% url "listings:index" %}>Inpatient medical services</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3">
+              {% comment %} fix register.html {% endcomment %}
+              <a class="nav-link" href="register.html">
+                <i class="fas fa-user-plus"></i> Register</a
+              >
+            </li>
+            <li class="nav-item mr-3">
+              {% comment %} fix login.html {% endcomment %}
+              <a class="nav-link" href="">
+                <i class="fas fa-sign-in-alt"></i>
+
+                Login</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>

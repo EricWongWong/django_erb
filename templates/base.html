@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <!-- Font Awesome -->
+     {% comment %} fix static {% endcomment %}
+     <link rel="stylesheet" href=<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" integrity="sha512-KulI0psuJQK8UMpOeiMLDXJtGOZEBm8RZNTyBBHIWqoXoPMFcw+L5AEo0YMpsW8BfiuWrdD1rH6GWGgQBF59Lg==" crossorigin="anonymous" referrerpolicy="no-referrer" />" />
+    # <link rel="stylesheet" href={% static "css/all.css" %}/>
+    <!-- Bootstrap -->
+     {% comment %} fix static {% endcomment %}
+    <link rel="stylesheet" href={% static "css/bootstrap.css" %}/>
+    {% comment %} fix static {% endcomment %}
+    <link rel="stylesheet" href={% static "css/lightbox.min.css" %}/>
+    <!-- Custom -->
+     {% comment %} fix static {% endcomment %}
+    <link rel="stylesheet" href={% static "css/style.css" %}/> 
+
+
+
+
+    <title>BC Health Care</title>
+  </head>
+
+  <body>
+
+{% include 'partials/_topbar.html' %}
+{% include 'partials/_navbar.html' %}
+{% block content %} {% endblock %}
+{% include 'partials/_footer.html' %}
+
+
+    {% comment %} fix static {% endcomment %}
+    <script src={% static "js/jquery-3.3.1.min.js" %}></script>
+     {% comment %} fix static {% endcomment %}
+    <script src={% static "js/bootstrap.bundle.min.js" %}></script>
+    {% comment %} fix static {% endcomment %}
+    <script src={%static "js/main.js" %}></script>
+    {% comment %} fix static {% endcomment %}
+    <script src={%static "js/lightbox.min.js" %}></script>
+  </body>
+</html>    
