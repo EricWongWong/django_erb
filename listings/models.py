@@ -12,7 +12,7 @@ class Listing(models.Model):
     services=models.CharField(max_length=200)
     service=models.IntegerField()
     room_type=models.CharField(max_length=50)
-    rooms=models.IntegerField
+    rooms=models.IntegerField()
     photo_main=models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1=models.ImageField(upload_to='photos/%Y/%m/%d/',blank=True)
     photo_2=models.ImageField(upload_to='photos/%Y/%m/%d/',blank=True)
