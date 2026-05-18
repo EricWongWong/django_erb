@@ -1,12 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+# from django.http import HttpResponse
+from listings.models import Listing
+
 
 # Create your views here.
 def index2(request):
     return HttpResponse("<h1>Hello, world !</h1>")
 def index(request):
-    return render(request,'pages/index.html')
+    listings = listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+    context = {"listings":listings}
+    return render(request,'pages/index.html', context)
+
 def about(request):
     return render(request,'pages/about.html')
-def login(request):
-    return render(request,'pages/login.html')

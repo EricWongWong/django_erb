@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
     
 {% block content %}    
     <!-- Showcase -->
@@ -97,7 +98,8 @@
     <section id="listings" class="py-5">
       <div class="container">
         <h3 class="text-center mb-3">Inpatient medical services</h3>
-        <div class="row">
+        < class="row">
+          {% if listings %}
           <!-- Listing 1 -->
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card listing-preview">
@@ -259,7 +261,13 @@
               </div>
             </div>
           </div>
-        </div>
+        {% endfor %}  
+        {% else %}
+          <div class="col-md-12">
+            <h2 No Clinic Available /h2>
+          </div>    
+        {% endif %}
+          </div>
       </div>
     </section>
 
