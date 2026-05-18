@@ -1,14 +1,13 @@
 from django.shortcuts import render
 # from django.http import HttpResponse
 from listings.models import Listing
-
+from listings.choices import district_choices, room_type_choices, rooms_choices
 
 # Create your views here.
-def index2(request):
-    return HttpResponse("<h1>Hello, world !</h1>")
+
 def index(request):
-    listings = listing.objects.order_by('-list_date').filter(is_published=True)[:3]
-    context = {"listings":listings}
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+    context = {"listings":listings, "district_choices":district_choices, "room_choices": room_type_choices, "rooms_choices":rooms_choices}
     return render(request,'pages/index.html', context)
 
 def about(request):
