@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
 {% load static %} 
 {% load humanize %} 
+{% block title %} | {{listing.title | title}} {% endblock %}
 {% block content %}
 
 <section id="showcase-inner" class="py-5 text-white">
@@ -31,6 +32,7 @@
   </div>
 </section>
 
+{% include "partials/_alert.html" %}
 <!-- Listing -->
 <section id="listing" class="py-4">
   <div class="container">
@@ -151,7 +153,20 @@
             </ul>
           </div>
         </div>
-
+      {% comment %} services tag {% endcomment %}
+        <div class="row mb-5">
+          </h4 class="text-seconday">Services : </>
+          {% if listing.services.all %}
+          <ul>
+            {% for service_tag in listing.services.all %}
+            <li class="mr-3"><h6>{{service_tag.name | title}}</h6>
+            </li>  
+            {% endfor %}
+          </ul>  
+          {% else %}
+          <h6> No Services </h6>
+          {% endif %}
+        </div>  
         <!-- Description -->
         <div class="row mb-5">
           <div class="col-md-12">
@@ -195,32 +210,63 @@
       <div class="modal-body">
 
       {% comment %}Form Action{% endcomment %}
-        <form>
+        <form action="{% url "contacts:contact" %}" method="POST">
+          {% csrf_token %}
           <div class="form-group">
-            <label for="property_name" class="col-form-label">Property:</label>
+            <input type="hidden" name="listing_id" value="{{listing.id}}"/>
+            <input type="hidden" name="doctor_email" value="{{listing.doctor.email}}"/>
+            {% if user.is_authenticated %}
+            <input type="hidden" name="user_id" value="{{user.id}}"/>
+            {% else %}
+            <input type="hidden" name="user_id" value="0" />
+            {% endif %}
+            <label for="Clinic_name" class="col-form-label">Clinic:</label>
+
             <input
               type="text"
               name="listing"
-              class="form-control"
-              value="45 Prince Street"
-              disabled
+              class="form-control" 
+              value="{{listing.title | title}}" readonly
             />
+
           </div>
           <div class="form-group">
             <label for="name" class="col-form-label">Name:</label>
-            <input type="text" name="name" class="form-control" required />
+            <input type="text" name="name" class="form-control"
+            {% if user.is_authenticated %}
+            value="{{user.first_name}} {{user.last_name}}" required
+            {% else %}
+            readonly
+            {% endif %}
+            />
           </div>
           <div class="form-group">
             <label for="email" class="col-form-label">Email:</label>
-            <input type="email" name="email" class="form-control" required />
+            <input type="email" name="email" class="form-control"
+            {% if user.is_authenticated %}
+            value="{{user.email}}" readonly
+            {% else %}
+             required
+            {% endif %}   
+            />         
           </div>
           <div class="form-group">
             <label for="phone" class="col-form-label">Phone:</label>
-            <input type="text" name="phone" class="form-control" />
+            <input type="text" name="phone" class="form-control" 
+            {% if user.is_authenticated %}
+            value="{{user.email}}" required
+            {% endif %}   
+            />          
           </div>
           <div class="form-group">
             <label for="message" class="col-form-label">Message:</label>
-            <textarea name="message" class="form-control"></textarea>
+            <textarea name="message" class="form-control" 
+            {% if user.is_authenticated %}
+            value="{{user.message}}" required
+            {% endif %}
+            /></textarea>
+          </div>
+
           </div>
           <hr />
           <input

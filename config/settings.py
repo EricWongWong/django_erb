@@ -49,7 +49,6 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'accounts.apps.AccountsConfig',
 
 ]
 
@@ -57,11 +56,13 @@ APPLICATION_APP = [
     'pages.apps.PagesConfig',
     'doctors.apps.DoctorsConfig',
     'listings.apps.ListingsConfig',
+    'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
 
 ]
 
 THIRD_PARTY_APPS = [ 
-    'debug_toolbar',
+    'debug_toolbar', 'widget_tweaks', 'taggit',
 
 ]
 
@@ -172,3 +173,10 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success'
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv('ericwongcitizen@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv('csrz dvxx auie xazf')
+EMAIL_USE_TLS = True

@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <html lang="en">  
 <head>
     <meta charset="UTF-8" />
@@ -9,9 +10,8 @@
     <link rel="stylesheet" href="{% static "css/all.css" %}" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     {% comment %} integrity="sha512-KulI0psuJQK8UMpOeiMLDXJtGOZEBm8RZNTyBBHIWqoXoPMFcw+L5AEo0YMpsW8BfiuWrdD1rH6GWGgQBF59Lg=="  {% endcomment %}
- >
+>
 
-   
     
     <!-- Bootstrap -->
     {% comment %} fix static {% endcomment %}
@@ -21,7 +21,8 @@
     <!-- Custom -->
     {% comment %} fix static {% endcomment %}
     <link rel="stylesheet" href="{% static "css/style.css" %}" > 
-
+    <!-- icon -->
+    <link rel="icon" type="image/svg+xml" href={% static "img/favicon.ico" %} >
 
 
 
@@ -44,6 +45,7 @@
     <script src="{%static "js/main.js" %}" ></script>
     {% comment %} fix static {% endcomment %}
     <script src="{%static "js/lightbox.min.js" %}" ></script>
+    <script src={% static "js/modal.js" %} ></script>
 
   </body>
   
